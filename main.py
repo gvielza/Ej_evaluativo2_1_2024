@@ -24,6 +24,6 @@ conexion.agregar_cine(1, "Hoyts", "Av. Corrientes 123")
 
 #Pruebo creando una pelicula 
 pelicula = Pelicula("La La Land", 128, "Musical")
-conexion.agregar_pelicula(1, pelicula.titulo, pelicula.duracion, pelicula.genero)
+conexion.agregar_pelicula(1, pelicula.get_titulo(), pelicula.get_duracion(), pelicula.get_genero())
 conexion.agregar_programacion_pelicula(1, 1, 1, "2021-10-10 20:00")
 pelicula.mostrar_info()
