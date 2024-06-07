@@ -8,6 +8,7 @@
 
 from clases.pelicula import Pelicula
 from base_datos.conexion import Conexion
+from clases.PeliculaAnimada import PeliculaAnimada
 
 #Conexion a base de datos
 conexion = Conexion("base_datos/cine.db")
@@ -27,3 +28,18 @@ pelicula = Pelicula("La La Land", 128, "Musical")
 conexion.agregar_pelicula(1, pelicula.get_titulo(), pelicula.get_duracion(), pelicula.get_genero())
 conexion.agregar_programacion_pelicula(1, 1, 1, "2021-10-10 20:00")
 pelicula.mostrar_info()
+
+#crear una pelicula animada
+pelicula_animada = PeliculaAnimada (1, "Toy Story",81, "Comedia", "Pixar")
+
+#probar metodos
+pelicula_animada.mostrar_info()
+
+#agregar pelicula animada a la base de datos
+conexion.agregar_pelicula_animada(
+    pelicula_animada.get_id(),
+    pelicula_animada.get_titulo(),
+    pelicula_animada.get_duracion(),
+    pelicula_animada.get_genero(),
+    pelicula_animada.get_estudio_animacion()
+)
