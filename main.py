@@ -8,7 +8,11 @@
 
 from clases.pelicula import Pelicula
 from base_datos.conexion import Conexion
+
 from clases.cine import Cine
+
+from clases.PeliculaAnimada import PeliculaAnimada
+
 
 # Conexión a la base de datos
 conexion = Conexion("base_datos/cine.db")
@@ -24,6 +28,7 @@ conexion.crear_tabla_programacion_peliculas()
 hoyts = Cine(1, "Hoyts", "Av. Corrientes 123")
 cinemark = Cine(2, "Cinemark", "Av. Santa Fe 456")
 print("Cines creados")
+
 
 # Agregar cines a la base de datos
 conexion.agregar_cine(hoyts.nombre, hoyts.direccion)
@@ -54,3 +59,24 @@ conexion.mostrar_programacion(cinemark.id)
 conexion.eliminar_programacion_pelicula(1)  # Suponiendo que la ID del registro en la tabla programacion_peliculas es 1
 print("\nProgramación actualizada del Cine Hoyts:")
 conexion.mostrar_programacion(hoyts.id)
+
+#Pruebo creando una pelicula 
+pelicula = Pelicula("La La Land", 128, "Musical")
+conexion.agregar_pelicula(1, pelicula.get_titulo(), pelicula.get_duracion(), pelicula.get_genero())
+conexion.agregar_programacion_pelicula(1, 1, 1, "2021-10-10 20:00")
+pelicula.mostrar_info()
+
+#crear una pelicula animada
+pelicula_animada = PeliculaAnimada (1, "Toy Story",81, "Comedia", "Pixar")
+
+#probar metodos
+pelicula_animada.mostrar_info()
+
+#agregar pelicula animada a la base de datos
+conexion.agregar_pelicula_animada(
+    pelicula_animada.get_id(),
+    pelicula_animada.get_titulo(),
+    pelicula_animada.get_duracion(),
+    pelicula_animada.get_genero(),
+    pelicula_animada.get_estudio_animacion()
+)
